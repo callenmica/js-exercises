@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise</title>
+</head>
+<body>
+  <script>
+    //8a
+    let product = {
+      name: 'basketball',
+      price: 2095
+    };
+
+    console.log(product);
+    //8b
+    product.price += 500;
+    console.log(product);
+
+    product.category = 'sports';
+    //8c
+    product['delivery-time'] = '3-days';
+    console.log(product);
+
+    //8d.
+    function comparePrice(product1, product2){
+      if(product1.price > product2.price) {
+        return product2;
+      } else if(product2.price > product1.price) {
+        return product1;
+      } else {
+        return null;
+      }
+    }
+
+    const apple = {
+      name: 'apple',
+      price: 100
+    }
+    const banana = {
+      name: 'banana',
+      price: 200
+    }
+    const mango = {
+      name: 'mango',
+      price: 250
+    }
+
+    const cheaperProd1 = comparePrice(banana, apple);
+    console.log(`cheapest between banana & apple:`, cheaperProd1);
+
+    const cheaperProd2 = comparePrice(mango, apple);
+    console.log(`cheapest between mango & apple:`, cheaperProd2);
+
+    const cheaperProd3 = comparePrice(banana, mango);
+    console.log(`cheapest between mango & banana:`, cheaperProd3);
+
+    //8e
+    function isSameProduct(product1, product2) {
+      return product1.name === product2.name && product1.price === product2.price;
+    }
+
+    const book1 = {
+      name: 'facing fear 365',
+      price: 100
+    };
+    const book2 = {
+      name: 'facing fear 365',
+      price: 100
+    }
+    const book3 = {
+      name: 'harry potter',
+      price: 100
+    }
+
+    const sameProd = isSameProduct(book1, book2);
+    console.log('is book1 and book2 the same product?', sameProd);
+    const sameProd2 = isSameProduct(book2, book3);
+    console.log('is book2 and book3 the same product?', sameProd2);
+  </script>
+</body>
+</html>

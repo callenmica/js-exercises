@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays and Loops</title>
+  </head>
+  <body>
+    <script>
+        /*
+      const myArray = [10,20,30];
+      console.log(myArray);
+
+      console.log(myArray[0]);
+      myArray[0] = 40;
+      console.log(myArray);
+
+      const array1 = [1,'hello',true,{car: 'honda'},[2,3]];
+      console.log(array1);
+
+      console.log(typeof [1,2]);
+      console.log(Array.isArray([1,2]));
+
+      console.log(array1.length);
+
+      //.push() adds a value to the end of the array
+      const arrayPush = [1,2,3];
+      arrayPush.push(4);
+      console.log(arrayPush);
+
+      //.splice() removes a value from an array
+      // 1. Index we want to remove
+      // 2. Number of values to remove
+      arrayPush.splice(0,2);
+      console.log(arrayPush);
+      */
+      /*
+      let i = 1;
+
+      while (i <= 5) {
+        console.log(i);
+        i++;
+      }
+
+      for (let i = 1; i <= 5; i++) {
+        console.log(i);
+      }
+
+      let randomNumber = 0;
+      while (randomNumber < 0.5) {
+        randomNumber = Math.random();
+      }
+
+      console.log(randomNumber);
+      */
+
+      /*
+      const todoList = [
+        'breakfast',
+        'run',
+        'climb',
+        'study'
+      ]
+      
+      for (let i = 0; i <= todoList.length - 1; i++) {
+        const value = todoList[i];
+        console.log(value);
+      }
+      */
+
+      /*
+        Accumulator Pattern
+        1. Create a variable to store the result.
+        2. Loop through the array and update the result.
+      */
+      const nums = [1, 1, 3];
+      let total = 0;
+
+      for(let i = 0; i < nums.length; i++) {
+        const num = nums[i];
+        total += num;
+      }
+      console.log(total);
+
+      const numsDoubled = [];
+
+      for (let i = 0; i < nums.length; i++) {
+        const num = nums[i];
+        numsDoubled.push(num * 2);
+        console.log(numsDoubled);
+      }
+
+    </script>
+  </body>
+</html>

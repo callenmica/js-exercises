@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom Projects</title>
+    <style>
+      * {
+        font-weight: bold;
+      }
+      .shipping-card {
+        border-style: solid;
+        width: 300px;
+        height: 110px;
+        padding: 20px;
+        border-radius: 15px;
+        border-color: gray;
+        border-width: 3px;
+        margin-top: 5px;
+      }
+      .cost-input {
+        font-size: 15px;
+        width: 180px;
+        padding: 10px;
+        border-radius: 8px;
+        border-style: solid;
+      }
+      .shipping-card p {
+        margin: 0px 0px 8px 0px;
+      }
+      .shipping-card button {
+        background-color: #00809d;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 8px;
+        margin-left: 2px;
+      }
+      .input-box {
+        display: flex;
+        align-items: center;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shipping-card">
+      <p>Shipping Calculator</p>
+      <p>Free shipping for orders over 40$</p>
+      <div class="input-box">
+        <input
+          placeholder="Cost of order"
+          class="js-cost-input cost-input"
+          onkeydown="
+          handleCostKeydown(event);
+          "
+        />
+        <button onclick="calculateTotal()">Calculate</button>
+      </div>
+      <p class="js-total-cost"></p>
+    </div>
+
+    <script>
+      const inputElement = document.querySelector(".js-cost-input");
+      const totalElement = document.querySelector(".js-total-cost");
+
+      function handleCostKeydown(event) {
+        if (event.key === "Enter") {
+          calculateTotal();
+        }
+      }
+
+      function calculateTotal() {
+        let cost = Number(inputElement.value) * 100;
+        totalElement.classList.remove("error");
+
+        if (inputElement.value.trim() === "") {
+          totalElement.innerHTML = "Error: enter a number";
+          totalElement.classList.add("error");
+          return;
+        }
+        if (cost < 0) {
+          totalElement.innerHTML = "Error: cost cannot be less than $0";
+          totalElement.classList.add("error");
+          return;
+        }
+        if (isNaN(cost)) {
+          totalElement.innerHTML = "Error: invalid input";
+          totalElement.classList.add("error");
+          return;
+        }
+        if (cost <= 4000) {
+          cost += 1000;
+          cost = cost / 100;
+        } else {
+          cost = cost / 100;
+        }
+        document.querySelector(".js-total-cost").innerHTML = `$${cost}`;
+      }
+    </script>
+  </body>
+</html>

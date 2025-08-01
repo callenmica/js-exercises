@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .gaming,
+      .music,
+      .tech {
+        border: none;
+        background-color: rgb(230, 230, 230);
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .is-toggled {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="buttonClick('gaming')" class="gaming">Gaming</button>
+
+    <button onclick="buttonClick('music')" class="music">Music</button>
+
+    <button onclick="buttonClick('tech')" class="tech">Tech</button>
+  </body>
+  <script>
+    function buttonClick(className) {
+      const btn = document.querySelector(`.${className}`);
+
+      offPreviousBtn();
+      btn.classList.add("is-toggled");
+    }
+
+    function offPreviousBtn() {
+      const prevBtn = document.querySelector(".is-toggled");
+      if (prevBtn) {
+        prevBtn.classList.remove("is-toggled");
+      }
+    }
+  </script>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Objects</title>
+  </head>
+  <body>
+    <script>
+      /*
+      const product = {
+        name: "socks",
+        price: 1090,
+      };
+      console.log(typeof product);
+      console.log(product.name);
+      console.log(product.price);
+
+      product.name = "e-bike";
+      console.log(product.name);
+
+      product.category = "sports";
+      console.log(product);
+      */
+
+      /*
+      const product2 = {
+        brand: 'acne studios',
+        'brand-name': 'strictly-students',
+        info: {
+          'head-count': 45,
+          location: 'subang'
+        },
+        fun: function process1() {
+          console.log('function inside object')
+        }
+      };
+      console.log(product2);
+      console.log(product2.brand);
+      console.log(product2['brand-name']);
+
+      console.log(product2.info);
+      console.log(product2.info['head-count']);
+      console.log(product2.info.location);
+
+      product2.fun();
+      
+      console.log(typeof console);
+      console.log(typeof console.log);
+
+      //json does not support functions
+      console.log(JSON.stringify(product2));
+      console.log(typeof JSON.stringify(product2));
+
+      const jsonString = JSON.stringify(product2);
+      console.log(JSON.parse(jsonString));
+      */
+
+      console.log("hello".length);
+      console.log("hello".toUpperCase());
+
+      const object1 = {
+        message: "hello",
+      };
+
+      const object2 = object1;
+
+      // You can change the values inside the object (i.e., modify its properties).
+
+      //You cannot change the object itself (i.e., reassign the variable to point to a different object).
+      object1.message = "sup";
+      console.log(object1);
+      console.log(object2);
+
+      const object3 = {
+        message: "sup",
+      };
+      //references are compared. not contents of the object.
+      console.log(object1 === object3);
+      // obj2 has the same ref as obj1
+      console.log(object1 === object2);
+
+      const object4 = {
+        message: "sup",
+        price: 799
+      };
+      //const message = object4.message;
+      const { message, price } = object4;
+      console.log(message);
+      console.log(price);
+
+      const object5 = {
+        //message: message
+        message, // Shorthand property
+        //method: function function1() {
+        //  console.log('method');
+        //}
+        method() { // Shorthand method
+          console.log('method')
+        }
+      };
+      console.log(object5);
+      object5.method();
+    </script>
+  </body>
+</html>

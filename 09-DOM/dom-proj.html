@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom Projects</title>
+    <style>
+      * {
+        font-weight: bold;
+      }
+      .calculator-card {
+        border-style: solid;
+        width: 300px;
+        height: 300px;
+        padding: 20px;
+        border-radius: 15px;
+        border-color: gray;
+        border-width: 3px;
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .shipping-card,
+      .onkeyup-card,
+      .cart-card {
+        border-style: solid;
+        width: 300px;
+        height: 110px;
+        padding: 20px;
+        border-radius: 15px;
+        border-color: gray;
+        border-width: 3px;
+        margin-top: 5px;
+      }
+      .calculator-card button {
+        width: 50px;
+        height: 40px;
+      }
+      .profile-card {
+        text-align: center;
+        width: 300px;
+        padding: 20px;
+        border-radius: 15px;
+        background-color: white;
+        border-color: gray;
+        border-style: solid;
+        border-width: 3px;
+      }
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #ff00cc, #00ccff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+      }
+      .profile-img img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .username {
+        font-size: 18px;
+        margin: 10px 0;
+        color: #333;
+      }
+      .username img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+      .js-follow-btn {
+        background-color: #1da1f2;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.5s;
+      }
+      .is-following {
+        background-color: #0d8bd8;
+      }
+      .js-follow-btn:hover {
+        background-color: #0d8bd8;
+      }
+      .cost-input {
+        font-size: 15px;
+        width: 180px;
+        padding: 10px;
+        border-radius: 8px;
+        border-style: solid;
+      }
+      .shipping-card p {
+        margin: 0px 0px 8px 0px;
+      }
+      .shipping-card button {
+        background-color: #00809d;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 8px;
+        margin-left: 2px;
+      }
+      .input-box{
+        display: flex;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+  Steps:
+  When we click the button,
+  1. If the text is "follow" ==> "following"
+  2. Otherwise, change it back ==> "follow"
+  -->
+    <div class="profile-card">
+      <div class="profile-img">
+        <img src="rain.jpg" alt="Profile Picture" />
+      </div>
+      <div class="username">
+        <span>@callenmica</span>
+        <img src="verified.jpg" alt="Verified" style="vertical-align: middle" />
+      </div>
+      <button
+        onclick="
+        follow();
+      "
+        class="js-follow-btn"
+      >
+        follow
+      </button>
+    </div>
+
+    <div class="shipping-card">
+      <p>Shipping Calculator</p>
+      <p>Free shipping for orders over 40$</p>
+      <div class="input-box">
+        <input
+          placeholder="Cost of order"
+          class="js-cost-input cost-input"
+          onkeydown="
+        handleCostKeydown(event);
+        "
+        />
+        <button onclick="calculateTotal()">Calculate</button>
+      </div>
+      <p class="js-total-cost"></p>
+    </div>
+
+    <!--
+    1. everytime a user types, update input using document.querySelector
+    -->
+    <div class="onkeyup-card">
+      <p>Onkeyup</p>
+      <input
+        placeholder="Type something..."
+        class="js-input"
+        onkeyup="
+        const inputElement = document.querySelector('.js-input');
+        document.querySelector('.js-display-input').innerHTML = inputElement.value;
+      "
+      />
+      <p class="js-display-input"></p>
+    </div>
+
+    <div class="cart-card">
+      <button onclick="updateCart(1);">Add to cart</button>
+      <button onclick="updateCart(2);">+2</button>
+      <button onclick="updateCart(3);">+3</button>
+      <button onclick="updateCart(4);">+4</button>
+      <button onclick="updateCart(5);">+5</button>
+      <p></p>
+      <button onclick="updateCart(-1);">Remove from cart</button>
+      <button onclick="updateCart(-2);">-2</button>
+      <button onclick="updateCart(-3);">-3</button>
+      <p class="js-cartQuantity"></p>
+    </div>
+
+    <div class="calculator-card">
+      <p class="js-calculation"></p>
+      <div class="buttons">
+        <button onclick="updateCalculation('1')">1</button>
+        <button onclick="updateCalculation('2')">2</button>
+        <button onclick="updateCalculation('3')">3</button>
+        <button onclick="updateCalculation('+')">+</button>
+        <p></p>
+        <button onclick="updateCalculation('4')">4</button>
+        <button onclick="updateCalculation('5')">5</button>
+        <button onclick="updateCalculation('6')">6</button>
+        <button onclick="updateCalculation('-')">-</button>
+        <p></p>
+        <button onclick="updateCalculation('7')">7</button>
+        <button onclick="updateCalculation('8')">8</button>
+        <button onclick="updateCalculation('9')">9</button>
+        <button onclick="updateCalculation('*')">*</button>
+        <p></p>
+        <button onclick="updateCalculation('.')">.</button>
+        <button onclick="updateCalculation('0')">0</button>
+        <button
+          onclick="
+          calculation = eval(calculation);
+          displayCalculation();
+        "
+        >
+          =
+        </button>
+        <button onclick="updateCalculation('/')">/</button>
+        <p></p>
+        <button
+          onclick="
+            calculation = '';
+            displayCalculation();
+          "
+        >
+          Clear
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let calculation = localStorage.getItem("calculation") || "";
+      displayCalculation();
+
+      function updateCalculation(value) {
+        calculation += value;
+
+        displayCalculation();
+
+        localStorage.setItem("calculation", calculation);
+      }
+
+      function displayCalculation() {
+        document.querySelector(".js-calculation").innerHTML = calculation;
+      }
+
+      let cartQuantity = JSON.parse(localStorage.getItem("cartQuantity")) || 0;
+
+      displayCart();
+
+      function updateCart(value) {
+        if (cartQuantity + value > 10) {
+          alert("Cart is full!");
+          return;
+        }
+        if (cartQuantity + value < 0) {
+          alert("Not enough items in the cart!");
+          return;
+        }
+        cartQuantity += value;
+        localStorage.setItem("cartQuantity", JSON.stringify(cartQuantity));
+        displayCart();
+      }
+
+      function displayCart() {
+        document.querySelector(
+          ".js-cartQuantity"
+        ).innerHTML = `Cart Quantity: ${cartQuantity}`;
+      }
+
+      function handleCostKeydown(event) {
+        if (event.key === "Enter") {
+          calculateTotal();
+        }
+      }
+
+      function calculateTotal() {
+        const inputElement = document.querySelector(".js-cost-input");
+        let cost = Number(inputElement.value) * 100;
+
+        if (cost < 4000) {
+          cost += 1000;
+          cost = cost / 100;
+        }
+        document.querySelector(".js-total-cost").innerHTML = `$${cost}`;
+      }
+
+      function follow() {
+        const btnElement = document.querySelector(".js-follow-btn");
+
+        if (btnElement.innerText === "follow") {
+          btnElement.innerHTML = "following";
+          btnElement.classList.add("is-following");
+        } else {
+          btnElement.innerHTML = "follow";
+          btnElement.classList.remove("is-following");
+        }
+      }
+    </script>
+  </body>
+</html>
